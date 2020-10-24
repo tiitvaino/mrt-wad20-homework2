@@ -3,7 +3,8 @@
     outline: none;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -39,7 +40,7 @@ a {
     text-align: center;
 }
 
-#login-container form div > input {
+#login-container form div>input {
     padding: 8px 16px;
     margin: 4px 0;
 }
@@ -90,7 +91,7 @@ nav div img {
     object-position: top center;
 }
 
-nav div.search-container > input {
+nav div.search-container>input {
     box-sizing: border-box;
     height: 30px;
     width: 80%;
@@ -99,7 +100,7 @@ nav div.search-container > input {
     border: 1px solid #e0e0e0;
 }
 
-nav div.search-container > button {
+nav div.search-container>button {
     height: 30px;
     width: 20%;
     margin: 0;
@@ -111,6 +112,28 @@ nav div.search-container > button {
 nav div.avatar-container {
     margin-right: 15px;
     text-align: right;
+}
+
+#user-info {
+    position: absolute;
+    right: 0;
+    display: none;
+    background-color: #ffffff;
+    width: fit-content;
+    height: fit-content;
+    text-align: left;
+    padding: 10px;
+    box-shadow: 0px 8px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+#user-info hr {
+    width: 100%;
+    border: 1px solid #f0f0f0;
+}
+
+#user-info p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .main-container {
@@ -159,13 +182,14 @@ nav div.avatar-container {
     left: 35px;
 }
 
-.post .post-author .post-author-info + small {
+.post .post-author .post-author-info+small {
     float: right;
     color: grey;
     padding: 10px;
 }
 
-.post .post-image img, video {
+.post .post-image img,
+video {
     width: 100%;
     min-height: 150px;
     max-height: 350px;
@@ -181,7 +205,7 @@ nav div.avatar-container {
     display: inline;
 }
 
-.post .post-title ~ .post-actions {
+.post .post-title~.post-actions {
     padding: 10px;
 }
 

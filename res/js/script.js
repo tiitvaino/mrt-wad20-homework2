@@ -28,8 +28,8 @@ $(function() {
         }
     })
 
-  $('.like-button').click(function () {
-        $(this).css('background-color', 'pink');
+    $(document).on("click", '.like-button', function () {
+        $(this).css('background-color', "#01579b");
     });
 
     loadPosts()
@@ -150,12 +150,12 @@ function displayPosts() {
         if (post.media != null) {
             if (post.media.type == "image") {
                 postImage.append(
-                    `<img src=${post.media.url}/>`
+                    `<img src="${post.media.url}"/>`
                 )
             } else if (post.media.type == "video") {
                 postImage.append(
                     `<video>
-                    <source src=${post.media.url} type="video/mp4">
+                    <source src="${post.media.url}" type="video/mp4">
                     </video>`
                 )
             }
@@ -176,7 +176,7 @@ function displayPosts() {
         })
 
         postActions.append(
-            `<button type="button " name="like " class="like-button ">${post.likes}</button>`
+            `<button type="button " name="like" class="like-button">${post.likes}</button>`
         )
 
         postDiv.append(postAuthor)

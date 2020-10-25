@@ -135,9 +135,10 @@ function displayPosts() {
         let postAuthor = jQuery('<div/>', {
             "class": 'post-author '
         })
+
         postAuthor.append(
             `<span class="post-author-info ">
-                <img src="${post.media.url}" alt="Post author ">
+                <img src="${post.author.avatar}" alt="Post author ">
                 <small>${post.author.firstname} ${post.author.lastname}</small>
             </span/>
             <small>${post.createTime}</small>`
@@ -147,28 +148,36 @@ function displayPosts() {
             "class": "post-image "
         })
         if (post.media != null) {
-            postImage.append('<img/>', {
-                "src:": post.media.url,
-            })
+            if (post.media.type == "image") {
+                postImage.append(
+                    `<img src=${post.media.url}/>`
+                )
+            } else if (post.media.type == "video") {
+                postImage.append(
+                    `<video>
+                    <source src=${post.media.url} type="video/mp4">
+                    </video>`
+                )
+            }
         }
 
         let postTitle = jQuery('<div/>', {
             "class": "post-title "
         })
-        postTitle.append('<h3/>', {
-            "text": post.text
-        })
+        if (post.text != null) {
+            postTitle.append(
+                `<h3>${post.text}<h3>`
+            )
+        }
+
 
         let postActions = jQuery('<div/>', {
             "class": "post-actions "
         })
 
-        postActions.append('<button/>', {
-            "type:": "button",
-            "name:": "like",
-            "class:": "like-button",
-            "text:": post.likes
-        })
+        postActions.append(
+            `<button type="button " name="like " class="like-button ">${post.likes}</button>`
+        )
 
         postDiv.append(postAuthor)
         postDiv.append(postImage)

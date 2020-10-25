@@ -35,10 +35,17 @@ $(function() {
     loadPosts()
         .then(function (response) {
         for (let post of response) {
-            posts.push(new Post(post.id, post.author, post.createTime, post.text, post.media, post.likes))
-        }
+            let media = null;
 
-        displayPosts()
+            if (post.media != null){
+                media = new Media(post.media.type, post.media.url);
+            }
+            author = new Profile(post.author.firstname, post.author.lastname, null, post.author.avatar);
+
+            posts.push(new Post(post.id, author, post.createTime, post.text, media, post.likes))
+        };
+
+        displayPosts();
 
     }).catch(function () {
         alert('error loading posts')

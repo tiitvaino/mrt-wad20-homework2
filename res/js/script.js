@@ -2,6 +2,8 @@ let posts = [];
 
 $(function() {
     loadProfile();
+    loadProfiles();
+
     $('.avatar').click(function() {
         if (!$('#user-info').is(":hidden")) {
             $('#user-info').hide();
@@ -11,7 +13,22 @@ $(function() {
         }
     });
 
-    $('.like-button').click(function () {
+    // Have to do this complicated version because the buttons are loaded dynamically
+    $(document).on("click", ".profile-follow-button", function(){
+        if ($(this).css("backgroundColor") == 'rgb(1, 87, 155)') {
+          $(this).css("backgroundColor", "rgb(255, 255, 255");
+          $(this).css("color", "black");
+          $(this).text("Unfollow");
+        }
+
+        else {
+          $(this).css("backgroundColor", "rgb(1, 87, 155");
+          $(this).css("color", "white");
+          $(this).text("Follow");
+        }
+    })
+
+  $('.like-button').click(function () {
         $(this).css('background-color', 'pink');
     });
 
@@ -27,8 +44,6 @@ $(function() {
         alert('error loading posts')
     });
 });
-
-
 
 function loadProfileInfo() {
     return $.get({
@@ -57,6 +72,41 @@ function loadProfile() {
         })
 }
 
+function loadBrowseProfiles() {
+    return $.get({
+        url: 'https://private-anon-7a5a5239ec-wad20postit.apiary-mock.com/profiles',
+        success: function(response) {
+            return response;
+        },
+        error: function() {
+            alert('error: could not load profiles');
+        }
+    });
+}
+
+function profileComponent(name, avatar) {
+    return `
+        <div class="profile-container">
+          <div class="profile-picture" style="background-image: url('${avatar}')"></div>
+          <div class="profile-name">${name}</div>
+          <div class="profile-follow">
+            <button type="button" class="profile-follow-button">Follow</button>
+          </div>
+        </div>
+    `;
+}
+
+function loadProfiles() {
+    $('.profiles').empty();
+    return loadBrowseProfiles().then(function(response) {
+
+      response.forEach(function(thing) {
+          let component = profileComponent(`${thing.firstname} ${thing.lastname}`, thing.avatar);
+          $('.profiles').append(component);
+      });
+    });
+}
+
 function loadPosts() {
     return $.get({
         url: 'https://private-anon-2d159cc08d-wad20postit.apiary-mock.com/posts',
@@ -68,7 +118,6 @@ function loadPosts() {
         }
     });
 }
-
 
 function displayPosts() {
     for (let post of posts) {

@@ -48,7 +48,9 @@ $(function() {
         displayPosts();
 
     }).catch(function () {
-        alert('error loading posts')
+        if (window.location.href.substring(window.location.href.length-10) == "index.html") {
+            alert('error loading posts')
+        }
     });
 });
 

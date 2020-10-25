@@ -72,7 +72,6 @@ function loadPosts() {
 
 function displayPosts() {
     for (let post of posts) {
-
         let postDiv = jQuery('<div/>', {
             "class": 'post '
         })
@@ -80,7 +79,7 @@ function displayPosts() {
         let postAuthor = jQuery('<div/>', {
             "class": 'post-author '
         })
-        postAuthor.append('<span/>'.class('post-author-info ').append('<small/>'.text(post.author)))
+        postAuthor.append('<span/>'.class('post-author-info ').append('<small/>'.text(post.author[0])))
         postAuthor.append('<small/>'.text(post.createTime))
 
         let postImage = jQuery('<div/>', {
@@ -104,5 +103,6 @@ function displayPosts() {
         postDiv.append(postActions)
 
         $('body.section').append(postDiv)
+
     }
 }

@@ -6,5 +6,6 @@ class Post {
         this.text = text;
         this.media = media;
         this.likes = likes;
+
     }
 }

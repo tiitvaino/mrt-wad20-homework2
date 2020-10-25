@@ -31,27 +31,26 @@ $(function() {
     $(document).on("click", '.like-button', function () {
         $(this).toggleClass("liked");
     });
+    if (window.location.href.substring(window.location.href.length-10) == "index.html") {
+        loadPosts()
+            .then(function (response) {
+                for (let post of response) {
+                    let media = null;
 
-    loadPosts()
-        .then(function (response) {
-        for (let post of response) {
-            let media = null;
+                    if (post.media != null){
+                        media = new Media(post.media.type, post.media.url);
+                    }
+                    author = new Profile(post.author.firstname, post.author.lastname, null, post.author.avatar);
 
-            if (post.media != null){
-                media = new Media(post.media.type, post.media.url);
-            }
-            author = new Profile(post.author.firstname, post.author.lastname, null, post.author.avatar);
+                    posts.push(new Post(post.id, author, post.createTime, post.text, media, post.likes))
+                };
 
-            posts.push(new Post(post.id, author, post.createTime, post.text, media, post.likes))
-        };
+                displayPosts();
 
-        displayPosts();
-
-    }).catch(function () {
-        if (window.location.href.substring(window.location.href.length-10) == "index.html") {
+            }).catch(function () {
             alert('error loading posts')
-        }
-    });
+        });
+    }
 });
 
 function loadProfileInfo() {

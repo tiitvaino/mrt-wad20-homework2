@@ -154,8 +154,13 @@ function displayPosts() {
                 )
             } else if (post.media.type == "video") {
                 postImage.append(
+<<<<<<< HEAD
                     `<video>
                     <source src="${post.media.url}" type="video/mp4">
+=======
+                    `<video controls>
+                    <source src=${post.media.url} type="video/mp4">
+>>>>>>> 13fb8a7ac09dcb5b33a5d1a819b206bc9e3a9969
                     </video>`
                 )
             }

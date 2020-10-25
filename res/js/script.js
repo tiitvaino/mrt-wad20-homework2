@@ -135,15 +135,13 @@ function displayPosts() {
         let postAuthor = jQuery('<div/>', {
             "class": 'post-author '
         })
-        postAuthor.append('<span/>', {
-            "class": 'post-author-info '
-                }).append('<small/>', {
-            "text": post.author.firstname
-        })
-
-        postAuthor.append('<small/>', {
-            "text" : post.createTime
-        })
+        postAuthor.append(
+            `<span class="post-author-info ">
+                <img src="${post.media.url}" alt="Post author ">
+                <small>${post.author.firstname} ${post.author.lastname}</small>
+            </span/>
+            <small>${post.createTime}</small>`
+            );
 
         let postImage = jQuery('<div/>', {
             "class": "post-image "
@@ -177,7 +175,7 @@ function displayPosts() {
         postDiv.append(postTitle)
         postDiv.append(postActions)
 
-        $('body.section').append(postDiv)
+        $('section').append(postDiv)
 
     }
 }

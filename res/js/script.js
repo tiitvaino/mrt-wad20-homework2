@@ -135,23 +135,42 @@ function displayPosts() {
         let postAuthor = jQuery('<div/>', {
             "class": 'post-author '
         })
-        postAuthor.append('<span/>'.class('post-author-info ').append('<small/>'.text(post.author[0])))
-        postAuthor.append('<small/>'.text(post.createTime))
+        postAuthor.append('<span/>', {
+            "class": 'post-author-info '
+                }).append('<small/>', {
+            "text": post.author.firstname
+        })
+
+        postAuthor.append('<small/>', {
+            "text" : post.createTime
+        })
 
         let postImage = jQuery('<div/>', {
             "class": "post-image "
         })
-        postImage.append('<img src=post.media/>')
+        if (post.media != null) {
+            postImage.append('<img/>', {
+                "src:": post.media.url,
+            })
+        }
 
         let postTitle = jQuery('<div/>', {
             "class": "post-title "
         })
-        postTitle.append('<h3/>'.text(post.text))
+        postTitle.append('<h3/>', {
+            "text": post.text
+        })
 
         let postActions = jQuery('<div/>', {
             "class": "post-actions "
         })
-        postActions.append('<button/>'.name("like").type("button").class("like-button").value(post.likes))
+
+        postActions.append('<button/>', {
+            "type:": "button",
+            "name:": "like",
+            "class:": "like-button",
+            "text:": post.likes
+        })
 
         postDiv.append(postAuthor)
         postDiv.append(postImage)

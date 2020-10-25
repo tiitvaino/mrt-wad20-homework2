@@ -74,8 +74,8 @@ function loadProfile() {
                 email = response.email,
                 avatar = response.avatar
             );
-            $('#user-name').text(profile.firstname + " " + profile.lastname);
-            $('#user-email').text(profile.email);
+            $('p.user-name').text(profile.firstname + " " + profile.lastname);
+            $('p.user-email').text(profile.email);
             $('img.avatar').attr("src", response.avatar);
         })
 }

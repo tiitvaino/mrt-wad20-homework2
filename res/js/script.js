@@ -28,8 +28,8 @@ $(function() {
         }
     })
 
-  $('.like-button').click(function () {
-        $(this).css('background-color', 'pink');
+  $('.like-button ').click(function () {
+        $(this).css('background-color', '#01579b');
     });
 
     loadPosts()
@@ -154,7 +154,7 @@ function displayPosts() {
                 )
             } else if (post.media.type == "video") {
                 postImage.append(
-                    `<video>
+                    `<video controls>
                     <source src=${post.media.url} type="video/mp4">
                     </video>`
                 )

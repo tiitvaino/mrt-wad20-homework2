@@ -29,7 +29,7 @@ $(function() {
     })
 
     $(document).on("click", '.like-button', function () {
-        $(this).css('background-color', "#01579b");
+        $(this).toggleClass("liked");
     });
 
     loadPosts()
